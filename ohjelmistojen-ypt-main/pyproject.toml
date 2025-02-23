@@ -1,0 +1,71 @@
+# Julkaisujärjestelmän määrittely
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# Projektin metatiedot
+[project]
+name = "example-mini-server"
+dynamic = ["version"]
+description = "Mini example server for automated testing"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [
+    { name = "Sampsa Penna" },
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+]
+dependencies = [
+    "Flask==3.1.0"
+]
+
+[project.optional-dependencies]
+test = [
+    "black==25.1.0",
+    "coverage==7.6.10",
+    "flake8-docstrings==1.7.0",
+    "flake8==7.1.1",
+    "mypy==1.14.1",
+    "pytest-cov==6.0.0",
+    "pytest==8.3.4",
+    "tox==4.23.2",
+    "setuptools==71.1.0",
+]
+dev = [
+    "pre-commit==4.0.1",
+    "ruff==0.9.2",
+]
+
+[project.urls]
+Source = "https://github.com/sampsapenna/ohjelmistojen-ypt.git"
+
+[tool.hatch.version]
+path = "palvelin/__init__.py"
+
+[tool.hatch.build]
+include = [
+    "palvelin/"
+]
+exclude = [
+    "palvelin_tests/"
+]
+
+[tool.black]
+line-length = 90
+target-version = ['py312']
+
+[tool.ruff]
+line-length = 90
+target-version = "py312"
+select = [
+    "E", "W", "F", "I", "C", "B", "D", "S"
+]
+ignore = [
+    "ANN101", "E501", "B904", "PLR2004", "S113", "D203", "D213"
+]
